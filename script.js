@@ -61,6 +61,25 @@ function updateValues() {
   choice3El.textContent = questions[activeQuestion].choice3;
   choice4El.textContent = questions[activeQuestion].choice4;
 }
+function removeUnselectedOption(selectedOption) {
+  choiceBtn.forEach((item) => {
+    if (item !== selectedOption) {
+      // Mistake 2 : Had choiceBtn and no classList
+      item.classList.remove("highlight-answer");
+    }
+  });
+}
+
+choiceBtn.forEach((item) => {
+  item.addEventListener("click", function () {
+    if (!item.classList.contains("highlight-answer")) {
+      item.classList.add("highlight-answer");
+      removeUnselectedOption(item);
+    } else {
+      item.classList.remove("highlight-answer");
+    }
+  });
+});
 
 btnStartEl.addEventListener("click", function () {
   updateValues();
@@ -84,22 +103,3 @@ btnNextEl.addEventListener("click", function () {
     updateValues();
   }
 });
-
-choiceBtn.forEach((item) => {
-  item.addEventListener("click", function () {
-    if (!item.classList.contains("highlight-answer")) {
-      item.classList.add("highlight-answer");
-      removeUnselectedOption(item);
-    } else {
-      item.classList.remove("highlight-answer");
-    }
-  });
-});
-function removeUnselectedOption(selectedOption) {
-  choiceBtn.forEach((item) => {
-    if (item !== selectedOption) {
-      // Mistake 2 : Had choiceBtn and no classList
-      item.classList.remove("highlight-answer");
-    }
-  });
-}
