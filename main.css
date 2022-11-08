@@ -4,10 +4,22 @@
   padding: 10px 0;
   margin: 0 50px;
 }
-
+.hidden {
+  display: none;
+}
 .btn-start {
   cursor: pointer;
 }
-.hidden {
-  display: none;
+.container {
+  display: flex;
+  position: relative;
+  border: 3px solid green;
+  margin-top: 5px;
+}
+.choice--btn {
+  justify-content: center;
+  padding: 10px;
+  width: 60%;
+  cursor: pointer;
+  margin: 5px;
 }
