@@ -13,7 +13,6 @@
 .container {
   display: flex;
   position: relative;
-  border: 3px solid green;
   margin-top: 5px;
 }
 .choice--btn {

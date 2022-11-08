@@ -15,8 +15,33 @@ const questions = [
     choice4: "Arnold Schwarzeneggar",
     answer: "Harrison Ford",
   },
+  {
+    question: 'Which country does "Temple of Doom" mainly take place in?',
+    choice1: "Spain",
+    choice2: "India",
+    choice3: "Nepal",
+    choice4: "Italy",
+    answer: "India",
+  },
+  {
+    question: "Who is Indiana Jones' companion in 'The Last Crusade'?",
+    choice1: "Shortround",
+    choice2: "Marion Ravenwood",
+    choice3: "Henry Jones, Sr.",
+    choice4: "Willie Scott",
+    answer: "Henry Jones, Sr.",
+  },
+  {
+    question:
+      'When did "Indiana Jones and the Raiders of the Lost Ark" release?',
+    choice1: "1979",
+    choice2: "1984",
+    choice3: "1978",
+    choice4: "1981",
+    answer: "1981",
+  },
 ];
-
+let activeQuestion = 0;
 const btnStartEl = document.querySelector(".btn-start");
 const currentQuestionEl = document.querySelector(".current--question");
 const choice1El = document.querySelector("#choice1");
@@ -26,11 +51,16 @@ const choice4El = document.querySelector("#choice4");
 const choiceBtn = document.querySelector(".choice--btn");
 
 btnStartEl.addEventListener("click", function () {
-  choiceBtn.classList.remove("hidden");
-  currentQuestionEl.innerHTML = questions[0].question;
-  choice1El.innerHTML = questions[0].choice1;
-  choice2El.innerHTML = questions[0].choice2;
-  choice3El.innerHTML = questions[0].choice3;
-  choice4El.innerHTML = questions[0].choice4;
+  choice1El.classList.remove("hidden");
+  choice2El.classList.remove("hidden");
+  choice3El.classList.remove("hidden");
+  choice4El.classList.remove("hidden");
+
+  currentQuestionEl.innerHTML = questions[activeQuestion].question;
+  choice1El.innerHTML = questions[activeQuestion].choice1;
+  choice2El.innerHTML = questions[activeQuestion].choice2;
+  choice3El.innerHTML = questions[activeQuestion].choice3;
+  choice4El.innerHTML = questions[activeQuestion].choice4;
   btnStartEl.textContent = "Next";
+  activeQuestion++;
 });
