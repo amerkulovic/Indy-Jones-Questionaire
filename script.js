@@ -49,18 +49,49 @@ const choice2El = document.querySelector("#choice2");
 const choice3El = document.querySelector("#choice3");
 const choice4El = document.querySelector("#choice4");
 const choiceBtn = document.querySelector(".choice--btn");
+const highlightAnswerEl = document.querySelector(".highlight-answer");
+
+choice1El.addEventListener("click", function () {
+  if (choice1El.classList.contains("highlight-answer")) {
+    choice1El.classList.remove("highlight-answer");
+  } else {
+    choice1El.classList.add("highlight-answer");
+  }
+});
+choice2El.addEventListener("click", function () {
+  if (choice2El.classList.contains("highlight-answer")) {
+    choice2El.classList.remove("highlight-answer");
+  } else {
+    choice2El.classList.add("highlight-answer");
+  }
+});
+choice3El.addEventListener("click", function () {
+  if (choice3El.classList.contains("highlight-answer")) {
+    choice3El.classList.remove("highlight-answer");
+  } else {
+    choice3El.classList.add("highlight-answer");
+  }
+});
+choice4El.addEventListener("click", function () {
+  if (choice4El.classList.contains("highlight-answer")) {
+    choice4El.classList.remove("highlight-answer");
+  } else {
+    choice4El.classList.add("highlight-answer");
+  }
+});
 
 btnStartEl.addEventListener("click", function () {
   choice1El.classList.remove("hidden");
   choice2El.classList.remove("hidden");
   choice3El.classList.remove("hidden");
   choice4El.classList.remove("hidden");
-
-  currentQuestionEl.innerHTML = questions[activeQuestion].question;
-  choice1El.innerHTML = questions[activeQuestion].choice1;
-  choice2El.innerHTML = questions[activeQuestion].choice2;
-  choice3El.innerHTML = questions[activeQuestion].choice3;
-  choice4El.innerHTML = questions[activeQuestion].choice4;
-  btnStartEl.textContent = "Next";
-  activeQuestion++;
+  if (questions[activeQuestion]) {
+    currentQuestionEl.innerHTML = questions[activeQuestion].question;
+    choice1El.textContent = questions[activeQuestion].choice1;
+    choice2El.textContent = questions[activeQuestion].choice2;
+    choice3El.textContent = questions[activeQuestion].choice3;
+    choice4El.textContent = questions[activeQuestion].choice4;
+    btnStartEl.textContent = "Next";
+    activeQuestion++;
+  }
 });

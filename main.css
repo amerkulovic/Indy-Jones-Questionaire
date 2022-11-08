@@ -22,3 +22,11 @@
   cursor: pointer;
   margin: 5px;
 }
+.choice--btn:hover {
+  background-color: green;
+  color: white;
+}
+.highlight-answer {
+  background-color: green;
+  color: white;
+}
