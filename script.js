@@ -41,7 +41,7 @@ const questions = [
     answer: "1981",
   },
 ];
-let activeQuestion = 1;
+let activeQuestion = 0;
 const btnStartEl = document.querySelector(".btn-start");
 const btnNextEl = document.querySelector(".btn-next");
 const currentQuestionEl = document.querySelector(".current--question");
@@ -52,19 +52,26 @@ const choice4El = document.querySelector("#choice4");
 // Mistake 1 : Didn't do All
 const choiceBtn = document.querySelectorAll(".choice--btn");
 const highlightAnswerEl = document.querySelector(".highlight-answer");
+const startText = document.querySelector(".start-text");
+
+function updateValues() {
+  currentQuestionEl.textContent = questions[activeQuestion].question;
+  choice1El.textContent = questions[activeQuestion].choice1;
+  choice2El.textContent = questions[activeQuestion].choice2;
+  choice3El.textContent = questions[activeQuestion].choice3;
+  choice4El.textContent = questions[activeQuestion].choice4;
+}
 
 btnStartEl.addEventListener("click", function () {
+  updateValues();
   choice1El.classList.remove("hidden");
   choice2El.classList.remove("hidden");
   choice3El.classList.remove("hidden");
   choice4El.classList.remove("hidden");
-  currentQuestionEl.textContent = questions[0].question;
-  choice1El.textContent = questions[0].choice1;
-  choice2El.textContent = questions[0].choice2;
-  choice3El.textContent = questions[0].choice3;
-  choice4El.textContent = questions[0].choice4;
+  currentQuestionEl.classList.remove("hidden");
   btnStartEl.classList.add("hidden");
   btnNextEl.classList.remove("hidden");
+  startText.classList.add("hidden");
 });
 
 btnNextEl.addEventListener("click", function () {
@@ -73,12 +80,8 @@ btnNextEl.addEventListener("click", function () {
     choice2El.classList.remove("highlight-answer");
     choice3El.classList.remove("highlight-answer");
     choice4El.classList.remove("highlight-answer");
-    currentQuestionEl.textContent = questions[activeQuestion].question;
-    choice1El.textContent = questions[activeQuestion].choice1;
-    choice2El.textContent = questions[activeQuestion].choice2;
-    choice3El.textContent = questions[activeQuestion].choice3;
-    choice4El.textContent = questions[activeQuestion].choice4;
     activeQuestion++;
+    updateValues();
   }
 });
 
@@ -100,4 +103,3 @@ function removeUnselectedOption(selectedOption) {
     }
   });
 }
-
