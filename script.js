@@ -48,37 +48,9 @@ const choice1El = document.querySelector("#choice1");
 const choice2El = document.querySelector("#choice2");
 const choice3El = document.querySelector("#choice3");
 const choice4El = document.querySelector("#choice4");
-const choiceBtn = document.querySelector(".choice--btn");
+// Mistake 1 : Didn't do All
+const choiceBtn = document.querySelectorAll(".choice--btn");
 const highlightAnswerEl = document.querySelector(".highlight-answer");
-
-choice1El.addEventListener("click", function () {
-  if (choice1El.classList.contains("highlight-answer")) {
-    choice1El.classList.remove("highlight-answer");
-  } else {
-    choice1El.classList.add("highlight-answer");
-  }
-});
-choice2El.addEventListener("click", function () {
-  if (choice2El.classList.contains("highlight-answer")) {
-    choice2El.classList.remove("highlight-answer");
-  } else {
-    choice2El.classList.add("highlight-answer");
-  }
-});
-choice3El.addEventListener("click", function () {
-  if (choice3El.classList.contains("highlight-answer")) {
-    choice3El.classList.remove("highlight-answer");
-  } else {
-    choice3El.classList.add("highlight-answer");
-  }
-});
-choice4El.addEventListener("click", function () {
-  if (choice4El.classList.contains("highlight-answer")) {
-    choice4El.classList.remove("highlight-answer");
-  } else {
-    choice4El.classList.add("highlight-answer");
-  }
-});
 
 btnStartEl.addEventListener("click", function () {
   choice1El.classList.remove("hidden", "highlight-answer");
@@ -94,4 +66,14 @@ btnStartEl.addEventListener("click", function () {
     btnStartEl.textContent = "Next";
     activeQuestion++;
   }
+});
+
+choiceBtn.forEach((item) => {
+  item.addEventListener("click", function () {
+    if (item.classList.contains("highlight-answer")) {
+      item.classList.remove("highlight-answer");
+    } else {
+      item.classList.add("highlight-answer");
+    }
+  });
 });
