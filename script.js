@@ -81,10 +81,10 @@ choice4El.addEventListener("click", function () {
 });
 
 btnStartEl.addEventListener("click", function () {
-  choice1El.classList.remove("hidden");
-  choice2El.classList.remove("hidden");
-  choice3El.classList.remove("hidden");
-  choice4El.classList.remove("hidden");
+  choice1El.classList.remove("hidden", "highlight-answer");
+  choice2El.classList.remove("hidden", "highlight-answer");
+  choice3El.classList.remove("hidden", "highlight-answer");
+  choice4El.classList.remove("hidden", "highlight-answer");
   if (questions[activeQuestion]) {
     currentQuestionEl.innerHTML = questions[activeQuestion].question;
     choice1El.textContent = questions[activeQuestion].choice1;
