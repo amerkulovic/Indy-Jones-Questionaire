@@ -10,6 +10,9 @@
 .btn-start {
   cursor: pointer;
 }
+.btn-next {
+  cursor: pointer;
+}
 .container {
   display: flex;
   position: relative;
@@ -27,6 +30,6 @@
   color: white;
 }
 .highlight-answer {
-  background-color: green;
+  background-color: rgb(29, 192, 29);
   color: white;
 }

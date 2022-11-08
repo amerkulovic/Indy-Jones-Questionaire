@@ -41,8 +41,9 @@ const questions = [
     answer: "1981",
   },
 ];
-let activeQuestion = 0;
+let activeQuestion = 1;
 const btnStartEl = document.querySelector(".btn-start");
+const btnNextEl = document.querySelector(".btn-next");
 const currentQuestionEl = document.querySelector(".current--question");
 const choice1El = document.querySelector("#choice1");
 const choice2El = document.querySelector("#choice2");
@@ -53,27 +54,51 @@ const choiceBtn = document.querySelectorAll(".choice--btn");
 const highlightAnswerEl = document.querySelector(".highlight-answer");
 
 btnStartEl.addEventListener("click", function () {
-  choice1El.classList.remove("hidden", "highlight-answer");
-  choice2El.classList.remove("hidden", "highlight-answer");
-  choice3El.classList.remove("hidden", "highlight-answer");
-  choice4El.classList.remove("hidden", "highlight-answer");
+  choice1El.classList.remove("hidden");
+  choice2El.classList.remove("hidden");
+  choice3El.classList.remove("hidden");
+  choice4El.classList.remove("hidden");
   if (questions[activeQuestion]) {
-    currentQuestionEl.innerHTML = questions[activeQuestion].question;
+    currentQuestionEl.textContent = questions[0].question;
+    choice1El.textContent = questions[0].choice1;
+    choice2El.textContent = questions[0].choice2;
+    choice3El.textContent = questions[0].choice3;
+    choice4El.textContent = questions[0].choice4;
+    btnStartEl.classList.add("hidden");
+    btnNextEl.classList.remove("hidden");
+  }
+});
+
+btnNextEl.addEventListener("click", function () {
+  if (questions[activeQuestion]) {
+    choice1El.classList.remove("highlight-answer");
+    choice2El.classList.remove("highlight-answer");
+    choice3El.classList.remove("highlight-answer");
+    choice4El.classList.remove("highlight-answer");
+    currentQuestionEl.textContent = questions[activeQuestion].question;
     choice1El.textContent = questions[activeQuestion].choice1;
     choice2El.textContent = questions[activeQuestion].choice2;
     choice3El.textContent = questions[activeQuestion].choice3;
     choice4El.textContent = questions[activeQuestion].choice4;
-    btnStartEl.textContent = "Next";
     activeQuestion++;
   }
 });
 
 choiceBtn.forEach((item) => {
   item.addEventListener("click", function () {
-    if (item.classList.contains("highlight-answer")) {
-      item.classList.remove("highlight-answer");
-    } else {
+    if (!item.classList.contains("highlight-answer")) {
       item.classList.add("highlight-answer");
+      removeUnselectedOption(item);
+    } else {
+      item.classList.remove("highlight-answer");
     }
   });
 });
+function removeUnselectedOption(selectedOption) {
+  choiceBtn.forEach((item) => {
+    if (item !== selectedOption) {
+      // Mistake 2 : Had choiceBtn and no classList
+      item.classList.remove("highlight-answer");
+    }
+  });
+}
