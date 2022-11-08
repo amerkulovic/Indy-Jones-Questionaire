@@ -1,0 +1,10 @@
+.body-style {
+  text-align: center;
+  border: 3px solid green;
+  padding: 10px 0;
+  margin: 0 50px;
+}
+
+.btn-start {
+  cursor: pointer;
+}
