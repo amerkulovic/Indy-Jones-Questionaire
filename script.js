@@ -44,6 +44,7 @@ const questions = [
 let activeQuestion = 0;
 const btnStartEl = document.querySelector(".btn-start");
 const btnNextEl = document.querySelector(".btn-next");
+const btnFinishEl = document.querySelector(".btn-finish");
 const currentQuestionEl = document.querySelector(".current--question");
 const choice1El = document.querySelector("#choice1");
 const choice2El = document.querySelector("#choice2");
@@ -101,5 +102,10 @@ btnNextEl.addEventListener("click", function () {
     choice4El.classList.remove("highlight-answer");
     activeQuestion++;
     updateValues();
+    console.log(activeQuestion);
+    if (activeQuestion === 4) {
+      btnNextEl.classList.add("hidden");
+      btnFinishEl.classList.remove("hidden");
+    }
   }
 });

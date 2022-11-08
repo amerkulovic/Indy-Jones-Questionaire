@@ -12,6 +12,15 @@
 }
 .btn-next {
   cursor: pointer;
+  border: 1px solid green;
+  padding: 5px 10px;
+  float: right;
+}
+.btn-finish {
+  cursor: pointer;
+  border: 1px solid green;
+  padding: 5px 10px;
+  float: right;
 }
 .container {
   display: flex;
