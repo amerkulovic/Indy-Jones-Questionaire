@@ -58,15 +58,13 @@ btnStartEl.addEventListener("click", function () {
   choice2El.classList.remove("hidden");
   choice3El.classList.remove("hidden");
   choice4El.classList.remove("hidden");
-  if (questions[activeQuestion]) {
-    currentQuestionEl.textContent = questions[0].question;
-    choice1El.textContent = questions[0].choice1;
-    choice2El.textContent = questions[0].choice2;
-    choice3El.textContent = questions[0].choice3;
-    choice4El.textContent = questions[0].choice4;
-    btnStartEl.classList.add("hidden");
-    btnNextEl.classList.remove("hidden");
-  }
+  currentQuestionEl.textContent = questions[0].question;
+  choice1El.textContent = questions[0].choice1;
+  choice2El.textContent = questions[0].choice2;
+  choice3El.textContent = questions[0].choice3;
+  choice4El.textContent = questions[0].choice4;
+  btnStartEl.classList.add("hidden");
+  btnNextEl.classList.remove("hidden");
 });
 
 btnNextEl.addEventListener("click", function () {
@@ -102,3 +100,4 @@ function removeUnselectedOption(selectedOption) {
     }
   });
 }
+
