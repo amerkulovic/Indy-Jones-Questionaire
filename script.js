@@ -54,6 +54,7 @@ const highlightAnswerEl = document.querySelector(".highlight-answer");
 const startText = document.querySelector(".start-text");
 const scoreEl = document.querySelector(".score");
 const scoreHolderEl = document.querySelector(".score-holder");
+const scoreBoxStyleEl = document.querySelector(".scorebox-style");
 const textBoxStyleEl = document.querySelector(".textbox-style");
 const submitBoxEl = document.querySelector(".submit-box");
 const formTag = document.querySelector("form");
@@ -101,6 +102,8 @@ btnStartEl.addEventListener("click", function () {
   currentQuestionEl.classList.remove("hidden");
   btnNextEl.classList.remove("hidden");
   scoreHolderEl.classList.remove("hidden");
+  textBoxStyleEl.classList.remove("hidden");
+  scoreBoxStyleEl.classList.remove("hidden");
   startText.classList.add("hidden");
   btnStartEl.classList.add("hidden");
 });
