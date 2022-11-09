@@ -17,17 +17,21 @@
       <p class="score-holder hidden">Score : 0/5</p>
       <div class="score"></div>
     </section>
-    <section class="body-style">
+    <section class="textbox-style">
       <p class="current--question hidden"></p>
       <button id="choice1" class="choice--btn hidden">Choice 1</button>
       <button id="choice2" class="choice--btn hidden">Choice 2</button>
       <button id="choice3" class="choice--btn hidden">Choice 3</button>
       <button id="choice4" class="choice--btn hidden">Choice 4</button>
     </section>
-    <div>
-      <button class="btn-next hidden">Next</button>
-      <button class="btn-finish hidden">Finish</button>
-    </div>
+    <button id="next" class="btn-next hidden">Next</button>
+    <button class="btn-finish hidden">Finish</button>
+    <form class="hidden">
+      <div class="submit-box">
+        <input placeholder="initials" class="initials" />
+        <button class="submit">Submit</button>
+      </div>
+    </form>
     <script src="./script.js"></script>
   </body>
 </html>

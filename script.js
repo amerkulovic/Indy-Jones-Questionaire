@@ -54,10 +54,13 @@ const highlightAnswerEl = document.querySelector(".highlight-answer");
 const startText = document.querySelector(".start-text");
 const scoreEl = document.querySelector(".score");
 const scoreHolderEl = document.querySelector(".score-holder");
-const bodyStyleEl = document.querySelector("body-style");
+const textBoxStyleEl = document.querySelector(".textbox-style");
+const submitBoxEl = document.querySelector(".submit-box");
+const formTag = document.querySelector("form");
 
 let score = 0;
 let activeQuestion = 0;
+let finalAnswer = "";
 
 function updateValues() {
   currentQuestionEl.textContent = questions[activeQuestion].question;
@@ -67,29 +70,30 @@ function updateValues() {
   choice4El.textContent = questions[activeQuestion].choice4;
 }
 function removeUnselectedOption(selectedOption) {
-  choiceBtn.forEach((item) => {
-    if (item !== selectedOption) {
+  choiceBtn.forEach((choice) => {
+    if (choice !== selectedOption) {
       // Mistake 2 : Had choiceBtn and no classList
-      item.classList.remove("highlight-answer");
+      choice.classList.remove("highlight-answer");
     }
   });
 }
+choiceBtn.forEach((choice) => {
+  choice.addEventListener("click", function () {
+    if (!choice.classList.contains("highlight-answer")) {
+      choice.classList.add("highlight-answer");
+      removeUnselectedOption(choice);
+    } else {
+      choice.classList.remove("highlight-answer");
+    }
+  });
+});
+
 function removeHiddenAndHighlight() {
   choice1El.classList.remove("hidden", "highlight-answer");
   choice2El.classList.remove("hidden", "highlight-answer");
   choice3El.classList.remove("hidden", "highlight-answer");
   choice4El.classList.remove("hidden", "highlight-answer");
 }
-choiceBtn.forEach((item) => {
-  item.addEventListener("click", function () {
-    if (!item.classList.contains("highlight-answer")) {
-      item.classList.add("highlight-answer");
-      removeUnselectedOption(item);
-    } else {
-      item.classList.remove("highlight-answer");
-    }
-  });
-});
 
 btnStartEl.addEventListener("click", function () {
   updateValues();
@@ -105,21 +109,34 @@ btnNextEl.addEventListener("click", function () {
   removeHiddenAndHighlight();
   activeQuestion++;
   updateValues();
-  console.log(activeQuestion);
+});
+
+btnNextEl.addEventListener("click", function () {
   if (activeQuestion === 4) {
     btnNextEl.classList.add("hidden");
     btnFinishEl.classList.remove("hidden");
   }
+});
+
+btnNextEl.addEventListener("click", function () {
+  // Happens every time the user clicks next button
   choiceBtn.forEach((item) => {
+    // Loop through each choice option
+    finalAnswer = questions[activeQuestion].answer;
+    // Store the correct answer
     if (choiceBtn.classList.contains("highlight-answer")) {
-      if (item.answer === answer[activeQuestion].answer) {
+      // Check which choice is highlighted
+      if (item.innerHTML == finalAnswer) {
+        // Is the choice correct?
         score++;
-        scoreHolderEl.textContent = `Score : ${score}/5`;
+        // If so, increment the score on the page
+        scoreHolderEl.innerHTML = `Score : ${score}/5`;
       }
     }
   });
 });
-
-// btnFinishEl.addEventListener("click", function () {
-//   bodyStyleEl.classList.add("hidden");
-// });
+btnFinishEl.addEventListener("click", function () {
+  formTag.classList.remove("hidden");
+  textBoxStyleEl.classList.add("hidden");
+  btnFinishEl.classList.add("hidden");
+});
