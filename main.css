@@ -7,6 +7,9 @@
   src: url(./fonts/AdventureSubtitlesItalic-vJz9.ttf);
 }
 
+.background {
+  background: url("./imgs/177711.jpg");
+}
 .header {
   font-family: adventure;
   font-size: 70px;
@@ -27,18 +30,21 @@
   padding: 10px 0;
   margin: 10px 50px;
   border: 3px solid green;
+  background-color: white;
 }
 .scorebox-style {
   text-align: center;
   padding: 10px 0;
   margin: 10px 50px;
   border: 3px solid green;
+  background-color: white;
 }
 .textbox-style {
   text-align: center;
   padding: 10px 0;
   margin: 10px 50px;
   border: 3px solid green;
+  background-color: white;
 }
 .hidden {
   display: none;
@@ -46,17 +52,20 @@
 .btn-start {
   cursor: pointer;
 }
+.center-btns {
+  text-align: center;
+}
 .btn-next {
   cursor: pointer;
   border: 1px solid green;
   padding: 5px 10px;
-  float: right;
+  margin: 0 auto;
 }
 .btn-finish {
   cursor: pointer;
   border: 1px solid green;
   padding: 5px 10px;
-  float: right;
+  margin: 0 auto;
 }
 .container {
   display: flex;
@@ -120,7 +129,7 @@
     margin: 0 0;
   }
   .scorebox-style {
-    margin: 0 0;
+    margin: 2px 0;
   }
   .textbox-style {
     margin: 0 0;
@@ -134,6 +143,12 @@
   .body-style {
     margin: 0 0;
   }
+  .scorebox-style {
+    margin: 2px 0;
+  }
+  .textbox-style {
+    margin: 0 0;
+  }
 }
 @media screen and (max-width: 280px) {
   .header {
@@ -144,7 +159,7 @@
     margin: 0 0;
   }
   .scorebox-style {
-    margin: 0 0;
+    margin: 2px 0;
   }
   .textbox-style {
     margin: 0 0;

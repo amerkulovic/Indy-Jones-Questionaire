@@ -61,7 +61,6 @@ const formTag = document.querySelector("form");
 
 let score = 0;
 let activeQuestion = 0;
-let finalAnswer = "";
 
 function updateValues() {
   currentQuestionEl.textContent = questions[activeQuestion].question;
@@ -125,11 +124,9 @@ btnNextEl.addEventListener("click", function () {
   // Happens every time the user clicks next button
   choiceBtn.forEach((item) => {
     // Loop through each choice option
-    finalAnswer = questions[activeQuestion].answer;
-    // Store the correct answer
     if (choiceBtn.classList.contains("highlight-answer")) {
       // Check which choice is highlighted
-      if (item.innerHTML === finalAnswer) {
+      if (item.innerHTML === questions[activeQuestion].answer) {
         // Is the choice correct?
         score++;
         // If so, increment the score on the page
