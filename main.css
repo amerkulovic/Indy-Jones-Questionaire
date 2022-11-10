@@ -71,11 +71,11 @@
   margin: 5px;
 }
 .choice--btn:hover {
-  background-color: green;
+  background-color: #c5b015;
   color: white;
 }
 .highlight-answer {
-  background-color: rgb(29, 192, 29);
+  background-color: #dc622a;
   color: white;
 }
 
