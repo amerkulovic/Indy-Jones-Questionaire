@@ -129,7 +129,7 @@ btnNextEl.addEventListener("click", function () {
     // Store the correct answer
     if (choiceBtn.classList.contains("highlight-answer")) {
       // Check which choice is highlighted
-      if (item.innerHTML == finalAnswer) {
+      if (item.innerHTML === finalAnswer) {
         // Is the choice correct?
         score++;
         // If so, increment the score on the page
