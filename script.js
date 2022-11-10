@@ -24,7 +24,7 @@ const questions = [
     answer: "India",
   },
   {
-    question: "Who is Indiana Jones' companion in 'The Last Crusade'?",
+    question: 'Who is Indiana Jones\' companion in "The Last Crusade"?',
     choice1: "Shortround",
     choice2: "Marion Ravenwood",
     choice3: "Henry Jones, Sr.",
