@@ -104,6 +104,12 @@
   .body-style {
     margin: 0 0;
   }
+  .scorebox-style {
+    margin: 0 0;
+  }
+  .textbox-style {
+    margin: 0 0;
+  }
 }
 
 @media screen and (max-width: 420px) {
@@ -111,6 +117,12 @@
     font-size: 40px;
   }
   .body-style {
+    margin: 0 0;
+  }
+  .scorebox-style {
+    margin: 0 0;
+  }
+  .textbox-style {
     margin: 0 0;
   }
 }
@@ -129,6 +141,12 @@
     text-align: center;
   }
   .body-style {
+    margin: 0 0;
+  }
+  .scorebox-style {
+    margin: 0 0;
+  }
+  .textbox-style {
     margin: 0 0;
   }
 }
