@@ -58,6 +58,8 @@ const scoreBoxStyleEl = document.querySelector(".scorebox-style");
 const textBoxStyleEl = document.querySelector(".textbox-style");
 const submitBoxEl = document.querySelector(".submit-box");
 const formTag = document.querySelector("form");
+const messageEl = document.querySelector(".message");
+const timerEl = document.querySelector(".timer");
 
 let score = 0;
 let activeQuestion = 0;
@@ -105,6 +107,25 @@ btnStartEl.addEventListener("click", function () {
   scoreBoxStyleEl.classList.remove("hidden");
   startText.classList.add("hidden");
   btnStartEl.classList.add("hidden");
+
+  function displayMessage() {
+    let message = "GAME OVER!";
+    messageEl.textContent = message;
+  }
+
+  function countdown() {
+    let timeLeft = 10;
+    let timeInterval = setInterval(function () {
+      timeLeft--;
+      timerEl.textContent = `${timeLeft} seconds remaining.`;
+      if (timeLeft === 0) {
+        clearInterval(timeInterval);
+        timerEl.classList.add("hidden");
+        displayMessage();
+      }
+    }, 1000);
+  }
+  countdown();
 });
 
 btnNextEl.addEventListener("click", function () {
@@ -120,21 +141,21 @@ btnNextEl.addEventListener("click", function () {
   }
 });
 
-btnNextEl.addEventListener("click", function () {
-  // Happens every time the user clicks next button
-  choiceBtn.forEach((item) => {
-    // Loop through each choice option
-    if (choiceBtn.classList.contains("highlight-answer")) {
-      // Check which choice is highlighted
-      if (item.innerHTML === questions[activeQuestion].answer) {
-        // Is the choice correct?
-        score++;
-        // If so, increment the score on the page
-        scoreHolderEl.innerHTML = `Score : ${score}/5`;
-      }
-    }
-  });
-});
+// btnNextEl.addEventListener("click", function () {
+// // Happens every time the user clicks next button
+// choiceBtn.forEach((item) => {
+//   // Loop through each choice option
+//   if (choiceBtn.classList.contains("highlight-answer")) {
+//     // Check which choice is highlighted
+//     if (item.innerHTML === questions[activeQuestion].answer) {
+//       // Is the choice correct?
+//       score++;
+//       // If so, increment the score on the page
+//       scoreHolderEl.innerHTML = `Score : ${score}/5`;
+//     }
+//   }
+// });
+// });
 btnFinishEl.addEventListener("click", function () {
   formTag.classList.remove("hidden");
   textBoxStyleEl.classList.add("hidden");
