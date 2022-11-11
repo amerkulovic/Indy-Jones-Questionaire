@@ -62,7 +62,16 @@ const messageEl = document.querySelector(".message");
 const timerEl = document.querySelector(".timer");
 
 let score = 0;
+let highscore = localStorage.getItem("highscore");
 let activeQuestion = 0;
+
+if (highscore !== null) {
+  if (score > highscore) {
+    localStorage.setItem("highscore", score);
+  }
+} else {
+  localStorage.setItem("highscore", score);
+}
 
 function displayMessage() {
   let message = "GAME OVER!";
