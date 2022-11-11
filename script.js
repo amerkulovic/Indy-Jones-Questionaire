@@ -64,6 +64,28 @@ const timerEl = document.querySelector(".timer");
 let score = 0;
 let activeQuestion = 0;
 
+function displayMessage() {
+  let message = "GAME OVER!";
+  messageEl.textContent = message;
+}
+
+function countdown() {
+  let timeLeft = 10;
+  let timeInterval = setInterval(function () {
+    timeLeft--;
+    timerEl.textContent = `${timeLeft} seconds remaining.`;
+    if (timeLeft === 0) {
+      clearInterval(timeInterval);
+      timerEl.classList.add("hidden");
+      btnNextEl.classList.add("hidden");
+      btnFinishEl.classList.add("hidden");
+      textBoxStyleEl.classList.add("hidden");
+      formTag.classList.remove("hidden");
+      displayMessage();
+    }
+  }, 1000);
+}
+
 function updateValues() {
   currentQuestionEl.textContent = questions[activeQuestion].question;
   choice1El.textContent = questions[activeQuestion].choice1;
@@ -108,23 +130,6 @@ btnStartEl.addEventListener("click", function () {
   startText.classList.add("hidden");
   btnStartEl.classList.add("hidden");
 
-  function displayMessage() {
-    let message = "GAME OVER!";
-    messageEl.textContent = message;
-  }
-
-  function countdown() {
-    let timeLeft = 10;
-    let timeInterval = setInterval(function () {
-      timeLeft--;
-      timerEl.textContent = `${timeLeft} seconds remaining.`;
-      if (timeLeft === 0) {
-        clearInterval(timeInterval);
-        timerEl.classList.add("hidden");
-        displayMessage();
-      }
-    }, 1000);
-  }
   countdown();
 });
 
