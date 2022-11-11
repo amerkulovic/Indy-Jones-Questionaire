@@ -159,10 +159,18 @@
   -webkit-text-stroke: 1px black;
   letter-spacing: 2.5px;
 }
-@media screen and (max-width: 525px) {
-  .header {
-    font-size: 50px;
+@media screen and (max-width: 600px) {
+  .body-style {
+    margin: 0 0;
   }
+  .scorebox-style {
+    margin: 3px 0;
+  }
+  .textbox-style {
+    margin: 0 0;
+  }
+}
+@media screen and (max-width: 525px) {
   .body-style {
     margin: 0 0;
   }

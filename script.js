@@ -174,4 +174,6 @@ btnFinishEl.addEventListener("click", function () {
   formTag.classList.remove("hidden");
   textBoxStyleEl.classList.add("hidden");
   btnFinishEl.classList.add("hidden");
+  timerEl.classList.add("hidden");
+  messageEl.classList.add("hidden");
 });
