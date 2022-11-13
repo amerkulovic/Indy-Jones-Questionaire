@@ -60,19 +60,13 @@ const submitBoxEl = document.querySelector(".submit-box");
 const formTag = document.querySelector("form");
 const messageEl = document.querySelector(".message");
 const timerEl = document.querySelector(".timer");
-let selectedAnswer = "";
 
+let selectedAnswer = "";
 let score = 0;
 let highscore = JSON.parse(localStorage.getItem("highscore"));
 let activeQuestion = 0;
 let timeLeft = 60;
 let finalTime = null;
-
-// if (highscore !== null) {
-//   localStorage.setItem("highscore", score);
-// } else {
-//   localStorage.setItem("highscore", score);
-// }
 
 function displayMessage() {
   let message = "GAME OVER!";
@@ -84,6 +78,14 @@ function countdown() {
     timeLeft--;
     timerEl.textContent = `${timeLeft} seconds remaining`;
     if (timeLeft === 0) {
+      clearInterval(timeInterval);
+      timerEl.classList.add("hidden");
+      btnNextEl.classList.add("hidden");
+      btnFinishEl.classList.add("hidden");
+      textBoxStyleEl.classList.add("hidden");
+      formTag.classList.remove("hidden");
+      displayMessage();
+    } else if (timeLeft < 0) {
       clearInterval(timeInterval);
       timerEl.classList.add("hidden");
       btnNextEl.classList.add("hidden");
@@ -128,6 +130,11 @@ function removeHiddenAndHighlight() {
   choice4El.classList.remove("hidden", "highlight-answer");
 }
 
+function validate_answer(event) {
+  event.preventDefault();
+  selectedAnswer = event.target.innerHTML;
+}
+
 btnStartEl.addEventListener("click", function () {
   console.log(highscore);
   updateValues();
@@ -157,39 +164,12 @@ btnNextEl.addEventListener("click", function () {
 });
 btnNextEl.addEventListener("click", function () {
   if (selectedAnswer !== questions[activeQuestion - 1].answer) {
-    console.log(questions[activeQuestion].answer);
     timeLeft -= 10;
   } else {
     score++;
     scoreHolderEl.innerHTML = `Score : ${score}/5`;
   }
 });
-
-function validate_answer(event) {
-  event.preventDefault();
-  console.log(event.target.innerHTML);
-  selectedAnswer = event.target.innerHTML;
-}
-// function checkAnswer() {
-//   choiceBtn.forEach((item) => {
-//     // Loop through each choice option
-//     if (item.classList.contains("highlight-answer")) {
-//       // Check which choice is highlighted
-//       if (item.innerHTML === questions[activeQuestion].answer) {
-//         // Is the choice correct?
-//         score++;
-//         console.log(score);
-//         // If so, increment the score on the page
-//         scoreHolderEl.innerHTML = `Score : ${score}/5`;
-//       }
-//     }
-//   });
-// }
-
-// btnNextEl.addEventListener("click", function () {
-//   // Happens every time the user clicks next button
-//   checkAnswer();
-// });
 btnFinishEl.addEventListener("click", function () {
   if (selectedAnswer !== questions[activeQuestion].answer) {
     console.log(questions[activeQuestion].answer);
@@ -211,6 +191,7 @@ function submit_score(event) {
   let finalData = {
     initials: document.getElementById("initials").value,
     time: finalTime,
+    score: score,
   };
   if (highscore === null) {
     highscore = [];
