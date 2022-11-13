@@ -60,17 +60,19 @@ const submitBoxEl = document.querySelector(".submit-box");
 const formTag = document.querySelector("form");
 const messageEl = document.querySelector(".message");
 const timerEl = document.querySelector(".timer");
+let selectedAnswer = "";
 
 let score = 0;
-let highscore = localStorage.getItem("highscore");
+let highscore = JSON.parse(localStorage.getItem("highscore"));
 let activeQuestion = 0;
 let timeLeft = 60;
+let finalTime = null;
 
-if (highscore !== null) {
-  localStorage.setItem("highscore", score);
-} else {
-  localStorage.setItem("highscore", score);
-}
+// if (highscore !== null) {
+//   localStorage.setItem("highscore", score);
+// } else {
+//   localStorage.setItem("highscore", score);
+// }
 
 function displayMessage() {
   let message = "GAME OVER!";
@@ -127,6 +129,7 @@ function removeHiddenAndHighlight() {
 }
 
 btnStartEl.addEventListener("click", function () {
+  console.log(highscore);
   updateValues();
   removeHiddenAndHighlight();
   currentQuestionEl.classList.remove("hidden");
@@ -152,20 +155,21 @@ btnNextEl.addEventListener("click", function () {
     btnFinishEl.classList.remove("hidden");
   }
 });
-console.log(choiceBtn);
 btnNextEl.addEventListener("click", function () {
-  choiceBtn.forEach((item) => {
-    console.log(item);
-    if (item.classList.contains("highlight-answer")) {
-      if (item.innerHTML !== questions[activeQuestion].answer) {
-        console.log(questions[activeQuestion].answer);
-        timeLeft -= 10;
-      } else {
-        timeLeft += 5;
-      }
-    }
-  });
+  if (selectedAnswer !== questions[activeQuestion - 1].answer) {
+    console.log(questions[activeQuestion].answer);
+    timeLeft -= 10;
+  } else {
+    score++;
+    scoreHolderEl.innerHTML = `Score : ${score}/5`;
+  }
 });
+
+function validate_answer(event) {
+  event.preventDefault();
+  console.log(event.target.innerHTML);
+  selectedAnswer = event.target.innerHTML;
+}
 // function checkAnswer() {
 //   choiceBtn.forEach((item) => {
 //     // Loop through each choice option
@@ -187,9 +191,33 @@ btnNextEl.addEventListener("click", function () {
 //   checkAnswer();
 // });
 btnFinishEl.addEventListener("click", function () {
+  if (selectedAnswer !== questions[activeQuestion].answer) {
+    console.log(questions[activeQuestion].answer);
+    timeLeft -= 10;
+  } else {
+    score++;
+    scoreHolderEl.innerHTML = `Score : ${score}/5`;
+  }
+  finalTime = timeLeft;
   formTag.classList.remove("hidden");
   textBoxStyleEl.classList.add("hidden");
   btnFinishEl.classList.add("hidden");
   timerEl.classList.add("hidden");
   messageEl.classList.add("hidden");
 });
+
+function submit_score(event) {
+  event.preventDefault();
+  let finalData = {
+    initials: document.getElementById("initials").value,
+    time: finalTime,
+  };
+  if (highscore === null) {
+    highscore = [];
+    highscore.push(finalData);
+  } else {
+    highscore.push(finalData);
+  }
+  console.log(highscore);
+  localStorage.setItem("highscore", JSON.stringify(highscore));
+}

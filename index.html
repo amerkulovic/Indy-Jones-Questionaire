@@ -20,10 +20,10 @@
     </section>
     <section class="textbox-style hidden">
       <p class="current--question hidden"></p>
-      <button id="choice1" class="choice--btn hidden">Choice 1</button>
-      <button id="choice2" class="choice--btn hidden">Choice 2</button>
-      <button id="choice3" class="choice--btn hidden">Choice 3</button>
-      <button id="choice4" class="choice--btn hidden">Choice 4</button>
+      <button id="choice1" class="choice--btn hidden" onclick="validate_answer(event)">Choice 1</button>
+      <button id="choice2" class="choice--btn hidden" onclick="validate_answer(event)">Choice 2</button>
+      <button id="choice3" class="choice--btn hidden" onclick="validate_answer(event)">Choice 3</button>
+      <button id="choice4" class="choice--btn hidden" onclick="validate_answer(event)">Choice 4</button>
     </section>
     <div class="center-btns">
       <button id="next" class="btn-next hidden">Next</button>
@@ -33,8 +33,8 @@
     <div class="message"></div>
     <form class="hidden">
       <div class="submit-box">
-        <input placeholder="initials" class="initials" />
-        <button class="submit">Submit</button>
+        <input placeholder="initials" class="initials_class" id="initials" />
+        <button class="submit" onclick="submit_score(event)">Submit</button>
       </div>
     </form>
     <section class="highscore-style hidden">
