@@ -111,6 +111,17 @@ h2 {
   -webkit-text-stroke: 1px black;
   letter-spacing: 2.5px;
 }
+.restart_button {
+  cursor: pointer;
+  border: 1px solid green;
+  padding: 5px 10px;
+  font-size: 25px;
+  margin: 0 auto;
+  font-family: adventure;
+  color: #dc622a;
+  -webkit-text-stroke: 1px black;
+  letter-spacing: 2.5px;
+}
 .choice--btn {
   justify-content: center;
   padding: 10px;

@@ -63,6 +63,7 @@ const timerEl = document.querySelector(".timer");
 const highScoreStyleEl = document.querySelector(".highscore-style");
 const nameDisplayEl = document.querySelector(".name-display");
 const scoreDisplayEl = document.querySelector(".score-display");
+const restartBtn = document.querySelector(".restart_button");
 
 let nameHigh = document.createElement("h2");
 let scoreHigh = document.createElement("h2");
@@ -152,6 +153,7 @@ btnStartEl.addEventListener("click", function () {
   scoreBoxStyleEl.classList.remove("hidden");
   startText.classList.add("hidden");
   btnStartEl.classList.add("hidden");
+  restartBtn.classList.add("hidden");
 
   countdown();
 });
@@ -199,6 +201,10 @@ btnFinishEl.addEventListener("click", function () {
   messageEl.classList.add("hidden");
 });
 
+restartBtn.addEventListener("click", function () {
+  window.location.reload();
+});
+
 function submit_score(event) {
   formTag.classList.add("hidden");
   highScoreStyleEl.classList.remove("hidden");
@@ -220,6 +226,6 @@ function submit_score(event) {
     nameHigh.textContent = `${highscore[i].initials}`;
     nameDisplayEl.appendChild(nameHigh);
   }
-
+  restartBtn.classList.remove("hidden");
   localStorage.setItem("highscore", JSON.stringify(highscore));
 }
