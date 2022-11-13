@@ -7,6 +7,9 @@
   src: url(./fonts/AdventureSubtitlesItalic-vJz9.ttf);
 }
 
+h2 {
+  color: #c44307;
+}
 .background {
   background: url("./imgs/177711.jpg");
 }
@@ -24,6 +27,7 @@
 .sub-header {
   font-family: subAdventure;
   margin-top: 0px;
+  color: black;
 }
 .body-style {
   text-align: center;
@@ -69,8 +73,7 @@
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #c44307;
-}
-.name-display {
+  background-color: rgba(246, 231, 203, 0.8);
 }
 .hidden {
   display: none;
