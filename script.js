@@ -49,7 +49,7 @@ const choice2El = document.querySelector("#choice2");
 const choice3El = document.querySelector("#choice3");
 const choice4El = document.querySelector("#choice4");
 // Mistake 1 : Didn't do All
-const choiceBtn = document.querySelectorAll(".choice--btn");
+let choiceBtn = document.querySelectorAll(".choice--btn");
 const highlightAnswerEl = document.querySelector(".highlight-answer");
 const startText = document.querySelector(".start-text");
 const scoreEl = document.querySelector(".score");
@@ -64,11 +64,10 @@ const timerEl = document.querySelector(".timer");
 let score = 0;
 let highscore = localStorage.getItem("highscore");
 let activeQuestion = 0;
+let timeLeft = 60;
 
 if (highscore !== null) {
-  if (score > highscore) {
-    localStorage.setItem("highscore", score);
-  }
+  localStorage.setItem("highscore", score);
 } else {
   localStorage.setItem("highscore", score);
 }
@@ -79,10 +78,9 @@ function displayMessage() {
 }
 
 function countdown() {
-  let timeLeft = 10;
   let timeInterval = setInterval(function () {
     timeLeft--;
-    timerEl.textContent = `${timeLeft} seconds remaining.`;
+    timerEl.textContent = `${timeLeft} seconds remaining`;
     if (timeLeft === 0) {
       clearInterval(timeInterval);
       timerEl.classList.add("hidden");
@@ -154,21 +152,39 @@ btnNextEl.addEventListener("click", function () {
     btnFinishEl.classList.remove("hidden");
   }
 });
+console.log(choiceBtn);
+btnNextEl.addEventListener("click", function () {
+  choiceBtn.forEach((item) => {
+    console.log(item);
+    if (item.classList.contains("highlight-answer")) {
+      if (item.innerHTML !== questions[activeQuestion].answer) {
+        console.log(questions[activeQuestion].answer);
+        timeLeft -= 10;
+      } else {
+        timeLeft += 5;
+      }
+    }
+  });
+});
+// function checkAnswer() {
+//   choiceBtn.forEach((item) => {
+//     // Loop through each choice option
+//     if (item.classList.contains("highlight-answer")) {
+//       // Check which choice is highlighted
+//       if (item.innerHTML === questions[activeQuestion].answer) {
+//         // Is the choice correct?
+//         score++;
+//         console.log(score);
+//         // If so, increment the score on the page
+//         scoreHolderEl.innerHTML = `Score : ${score}/5`;
+//       }
+//     }
+//   });
+// }
 
 // btnNextEl.addEventListener("click", function () {
-// // Happens every time the user clicks next button
-// choiceBtn.forEach((item) => {
-//   // Loop through each choice option
-//   if (choiceBtn.classList.contains("highlight-answer")) {
-//     // Check which choice is highlighted
-//     if (item.innerHTML === questions[activeQuestion].answer) {
-//       // Is the choice correct?
-//       score++;
-//       // If so, increment the score on the page
-//       scoreHolderEl.innerHTML = `Score : ${score}/5`;
-//     }
-//   }
-// });
+//   // Happens every time the user clicks next button
+//   checkAnswer();
 // });
 btnFinishEl.addEventListener("click", function () {
   formTag.classList.remove("hidden");
