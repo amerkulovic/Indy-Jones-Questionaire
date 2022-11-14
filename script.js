@@ -198,18 +198,6 @@ btnStartEl.addEventListener("click", function () {
   countdown();
 });
 
-// btnNextEl.addEventListener("click", function () {
-//   removeHiddenAndHighlight();
-//   activeQuestion++;
-//   updateValues();
-// });
-
-// btnNextEl.addEventListener("click", function () {
-//   if (activeQuestion === 4) {
-//     btnNextEl.classList.add("hidden");
-//     btnFinishEl.classList.remove("hidden");
-//   }
-// });
 btnNextEl.addEventListener("click", function () {
   removeHiddenAndHighlight();
   activeQuestion++;
@@ -232,15 +220,17 @@ btnFinishEl.addEventListener("click", function () {
     score++;
     scoreHolderEl.innerHTML = `Score : ${score}/10`;
   }
-  finalTime = timeLeft;
-  timeLeft = 0;
+  if (timeLeft >= 0) {
+    finalTime = timeLeft;
+  } else {
+    finalTime = 0;
+  }
   formTag.classList.remove("hidden");
   textBoxStyleEl.classList.add("hidden");
   btnFinishEl.classList.add("hidden");
   timerEl.classList.add("hidden");
   messageEl.classList.add("hidden");
 });
-
 restartBtn.addEventListener("click", function () {
   window.location.reload();
 });
