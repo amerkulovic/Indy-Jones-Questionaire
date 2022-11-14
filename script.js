@@ -114,7 +114,7 @@ let score = 0;
 let highscore = JSON.parse(localStorage.getItem("highscore"));
 let activeQuestion = 0;
 let timeLeft = 60;
-let finalTime = null;
+let finalTime = 0;
 
 function displayMessage() {
   let message = "GAME OVER!";
