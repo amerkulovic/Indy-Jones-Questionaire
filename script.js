@@ -39,6 +39,46 @@ const questions = [
     choice4: "1981",
     answer: "1981",
   },
+  {
+    question: "Where does Indiana Jones teach archaeology?",
+    choice1: "Harvard College",
+    choice2: "Trinity College",
+    choice3: "Marshal College",
+    choice4: "Yale College",
+    answer: "Marshal College",
+  },
+  {
+    question: "What does Henry Jones, Sr. call Inidana?",
+    choice1: "Junior",
+    choice2: "Son",
+    choice3: "Indy",
+    choice4: "Jones",
+    answer: "Junior",
+  },
+  {
+    question: "What is Indiana Jones afraid of?",
+    choice1: "Spiders",
+    choice2: "Monkeys",
+    choice3: "Snakes",
+    choice4: "Tight Spaces",
+    answer: "Snakes",
+  },
+  {
+    question: "Which film takes place first chronologically in the Indiana Jones Universe?",
+    choice1: "The Raiders of the Lost Ark",
+    choice2: "The Temple of Doom",
+    choice3: "The Last Crusade",
+    choice4: "The Kingdom of the Crystal Skull",
+    answer: "The Temple of Doom",
+  },
+  {
+    question: 'Which actress plays "Irina Spalko" in Kingdom of the Crystal Skull?',
+    choice1: "Kate Upshaw",
+    choice2: "Cate Blanchett",
+    choice3: "Angelina Jolie",
+    choice4: "Karen Allen",
+    answer: "Cate Blanchett",
+  },
 ];
 const btnStartEl = document.querySelector(".btn-start");
 const btnNextEl = document.querySelector(".btn-next");
@@ -174,7 +214,7 @@ btnNextEl.addEventListener("click", function () {
   removeHiddenAndHighlight();
   activeQuestion++;
   updateValues();
-  if (activeQuestion === 4) {
+  if (activeQuestion === 9) {
     btnNextEl.classList.add("hidden");
     btnFinishEl.classList.remove("hidden");
   }
@@ -182,7 +222,7 @@ btnNextEl.addEventListener("click", function () {
     timeLeft -= 10;
   } else {
     score++;
-    scoreHolderEl.innerHTML = `Score : ${score}/5`;
+    scoreHolderEl.innerHTML = `Score : ${score}/10`;
   }
 });
 btnFinishEl.addEventListener("click", function () {
@@ -190,7 +230,7 @@ btnFinishEl.addEventListener("click", function () {
     timeLeft -= 10;
   } else {
     score++;
-    scoreHolderEl.innerHTML = `Score : ${score}/5`;
+    scoreHolderEl.innerHTML = `Score : ${score}/10`;
   }
   finalTime = timeLeft;
   timeLeft = 0;
@@ -215,7 +255,7 @@ function submit_score(event) {
     score: score,
   };
   if (highscore === null) {
-    // highscore = [];
+    highscore = [];
     highscore.push(finalData);
   } else {
     highscore.push(finalData);
