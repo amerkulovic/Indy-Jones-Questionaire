@@ -206,7 +206,7 @@ btnNextEl.addEventListener("click", function () {
     btnFinishEl.classList.remove("hidden");
   }
   if (selectedAnswer !== questions[activeQuestion - 1].answer) {
-    timeLeft -= 10;
+    timeLeft -= 5;
   } else {
     score++;
     scoreHolderEl.innerHTML = `Correct : ${score}/10`;
@@ -214,7 +214,7 @@ btnNextEl.addEventListener("click", function () {
 });
 btnFinishEl.addEventListener("click", function () {
   if (selectedAnswer !== questions[activeQuestion].answer) {
-    timeLeft -= 10;
+    timeLeft -= 5;
   } else {
     score++;
     scoreHolderEl.innerHTML = `Correct : ${score}/10`;
