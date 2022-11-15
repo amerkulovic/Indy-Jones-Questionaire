@@ -105,9 +105,8 @@ const nameDisplayEl = document.querySelector(".name-display");
 const scoreDisplayEl = document.querySelector(".score-display");
 const restartBtn = document.querySelector(".restart_button");
 
-let nameHigh = document.createElement("h2");
-let scoreHigh = document.createElement("h2");
-// nameHigh.textContent = `Initials: ${finalData.initials}`;
+let ulScoreEl = document.querySelector('#ulScore');
+let ulNameEl = document.querySelector('#ulName');
 
 let selectedAnswer = "";
 let score = 0;
@@ -220,11 +219,12 @@ btnFinishEl.addEventListener("click", function () {
     score++;
     scoreHolderEl.innerHTML = `Score : ${score}/10`;
   }
-  if (timeLeft >= 0) {
+  if (timeLeft > 0) {
     finalTime = timeLeft;
   } else {
-    finalTime = 0;
+    finalTime;
   }
+  timeLeft = 0;
   formTag.classList.remove("hidden");
   textBoxStyleEl.classList.add("hidden");
   btnFinishEl.classList.add("hidden");
@@ -251,10 +251,21 @@ function submit_score(event) {
     highscore.push(finalData);
   }
   for (let i = 0; i < highscore.length; i++) {
-    scoreHigh.textContent = `${highscore[i].time}`;
-    scoreDisplayEl.appendChild(scoreHigh);
-    nameHigh.textContent = `${highscore[i].initials}`;
-    nameDisplayEl.appendChild(nameHigh);
+    let liName = document.createElement('li');
+    let liScore = document.createElement('li');
+    let name = highscore[i].initials;
+    let score = highscore[i].time;
+
+    liName.appendChild(document.createTextNode(name));
+    liScore.appendChild(document.createTextNode(score));
+
+    ulNameEl.append(liName);
+    ulScoreEl.append(liScore);
+    
+    // scoreHigh.textContent = `${highscore[i].time}`;
+    // scoreDisplayEl.appendChild(scoreHigh);
+    // nameHigh.textContent = `${highscore[i].initials}`;
+    // nameDisplayEl.appendChild(nameHigh);
   }
   restartBtn.classList.remove("hidden");
   localStorage.setItem("highscore", JSON.stringify(highscore));
