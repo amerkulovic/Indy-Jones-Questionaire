@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this quiz, you will be asked 10 questions about the Indiana Jones franchise! You have a time limit of 60 seconds and any wrong answer deducts your time by 10 seconds. Your score is the time that is left at the end of the quiz. Have fun!
+In this quiz, you will be asked 10 questions about the Indiana Jones franchise! You have a time limit of 60 seconds and any wrong answer deducts your time by 5 seconds. Your score is the time that is left at the end of the quiz. Have fun!
 
 ## Skills
 
