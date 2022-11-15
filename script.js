@@ -105,8 +105,8 @@ const nameDisplayEl = document.querySelector(".name-display");
 const scoreDisplayEl = document.querySelector(".score-display");
 const restartBtn = document.querySelector(".restart_button");
 
-let ulScoreEl = document.querySelector('#ulScore');
-let ulNameEl = document.querySelector('#ulName');
+let ulTimeEl = document.querySelector("#ulTime");
+let ulNameEl = document.querySelector("#ulName");
 
 let selectedAnswer = "";
 let score = 0;
@@ -209,7 +209,7 @@ btnNextEl.addEventListener("click", function () {
     timeLeft -= 10;
   } else {
     score++;
-    scoreHolderEl.innerHTML = `Score : ${score}/10`;
+    scoreHolderEl.innerHTML = `Correct : ${score}/10`;
   }
 });
 btnFinishEl.addEventListener("click", function () {
@@ -217,7 +217,7 @@ btnFinishEl.addEventListener("click", function () {
     timeLeft -= 10;
   } else {
     score++;
-    scoreHolderEl.innerHTML = `Score : ${score}/10`;
+    scoreHolderEl.innerHTML = `Correct : ${score}/10`;
   }
   if (timeLeft > 0) {
     finalTime = timeLeft;
@@ -240,7 +240,7 @@ function submit_score(event) {
   highScoreStyleEl.classList.remove("hidden");
   event.preventDefault();
   let finalData = {
-    initials: document.getElementById("initials").value,
+    initials: document.getElementById("initials").value || "N/A",
     time: finalTime,
     score: score,
   };
@@ -251,21 +251,15 @@ function submit_score(event) {
     highscore.push(finalData);
   }
   for (let i = 0; i < highscore.length; i++) {
-    let liName = document.createElement('li');
-    let liScore = document.createElement('li');
+    let liName = document.createElement("li");
+    let liTime = document.createElement("li");
     let name = highscore[i].initials;
-    let score = highscore[i].time;
-
+    let time = highscore[i].time;
     liName.appendChild(document.createTextNode(name));
-    liScore.appendChild(document.createTextNode(score));
+    liTime.appendChild(document.createTextNode(time));
 
     ulNameEl.append(liName);
-    ulScoreEl.append(liScore);
-    
-    // scoreHigh.textContent = `${highscore[i].time}`;
-    // scoreDisplayEl.appendChild(scoreHigh);
-    // nameHigh.textContent = `${highscore[i].initials}`;
-    // nameDisplayEl.appendChild(nameHigh);
+    ulTimeEl.append(liTime);
   }
   restartBtn.classList.remove("hidden");
   localStorage.setItem("highscore", JSON.stringify(highscore));
