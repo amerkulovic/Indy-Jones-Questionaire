@@ -216,9 +216,12 @@ h2 {
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 430px) {
   .header {
     font-size: 40px;
+  }
+  .sub-header {
+    font-size: 15px;
   }
   .body-style {
     margin: 0 0;
