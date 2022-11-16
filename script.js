@@ -112,7 +112,7 @@ let selectedAnswer = "";
 let score = 0;
 let highscore = JSON.parse(localStorage.getItem("highscore"));
 let activeQuestion = 0;
-let timeLeft = 60;
+let timeLeft = 75;
 let finalTime = 0;
 
 function displayMessage() {
