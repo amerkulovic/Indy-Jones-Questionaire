@@ -15,4 +15,4 @@ In this quiz, you will be asked 10 questions about the Indiana Jones franchise! 
 
 ## Screenshot
 
-![Alt text](/Screen%20Shot%202022-11-15%20at%2011.54.09%20AM.png "Indiana Jones Quiz")
+![Indiana Jones Quiz](/Screen%20Shot%202022-11-15%20at%2011.54.09%20AM.png "Indiana Jones Quiz")
