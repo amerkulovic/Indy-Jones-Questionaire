@@ -6,10 +6,10 @@ In this quiz, you will be asked 10 questions about the Indiana Jones franchise! 
 
 ## Skills
 
--CSS knowledge
--JavaScript logic
+-CSS
+-JavaScript
 -DOM Manipulation
--HTML structuring
+-HTML
 -Media Query functionality
 -Usage of Local Storage
 
